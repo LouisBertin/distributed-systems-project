@@ -8,10 +8,10 @@ import javax.swing.JLabel;
 public class Frame extends JFrame{
 	public Frame(){                
 	    this.setTitle("Project");
-	    this.setSize(500, 500);
+	    this.setSize(700, 700);
 	    this.setLocationRelativeTo(null);               
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    this.setContentPane(new Panel());	    
+	    this.setContentPane(new Panel(this.getSize()));	    
 
 	    this.setVisible(true);
 	  }    
