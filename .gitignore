@@ -246,3 +246,10 @@ gradle-app.setting
 **/build/
 
 # End of https://www.gitignore.io/api/osx,linux,gradle,windows,eclipse,intellij+all
+/nbproject/private/
+build.xml
+manifest.mf
+nbproject/build-impl.xml
+nbproject/genfiles.properties
+nbproject/project.properties
+nbproject/project.xml
