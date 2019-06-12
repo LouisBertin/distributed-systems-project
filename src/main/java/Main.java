@@ -1,6 +1,13 @@
+/**
+ * The type Main.
+ */
 public class Main {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
-        // Prints "Hello, World" to the terminal window.
-        System.out.println("Hello, World");
+        System.out.println(Parser.getDataFromJson(Helper.getResourcesPath() + "/data/sample.json"));
     }
 }
