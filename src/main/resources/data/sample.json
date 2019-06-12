@@ -1,18 +1,28 @@
 {
-  "bathroom": {
-    "debug": "on",
-    "message": "hello",
-    "text": {
-      "data": "Click Here",
-      "size": 36
+  "kitchen": {
+    "label": "on",
+    "background": "green",
+    "coords": [],
+    "objects": {
+      "microwave": {
+        "technology" : "wifi",
+        "coords": [10, 20]
+      },
+      "coffee_machine": {
+        "technology" : "wifi",
+        "coords": [10, 30]
+      }
     }
   },
-  "kitchen": {
-    "debug": "on",
-    "message": "mdr",
-    "text": {
-      "data": "Click Here",
-      "size": 36
+  "bathroom": {
+    "label": "bathroom",
+    "background": "blue",
+    "coords": [],
+    "objects": {
+      "hair_dryer": {
+        "technology" : "wifi",
+        "coords": [30, 20]
+      }
     }
   }
 }
