@@ -1,3 +1,5 @@
+import uqac.distributedsystems.gui.Frame;
+
 /**
  * The type Main.
  */
@@ -9,5 +11,7 @@ public class Main {
      */
     public static void main(String[] args) {
         System.out.println(Parser.getDataFromJson(Helper.getResourcesPath() + "/data/sample.json"));
+        
+        Frame f = new Frame();
     }
 }
