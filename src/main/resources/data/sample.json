@@ -1,0 +1,18 @@
+{
+  "bathroom": {
+    "debug": "on",
+    "message": "hello",
+    "text": {
+      "data": "Click Here",
+      "size": 36
+    }
+  },
+  "kitchen": {
+    "debug": "on",
+    "message": "mdr",
+    "text": {
+      "data": "Click Here",
+      "size": 36
+    }
+  }
+}
