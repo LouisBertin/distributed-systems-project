@@ -2,17 +2,18 @@ package uqac.distributedsystems.model;
 
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
+import java.lang.Object;
 
 /**
- * Classe permettant de connaitre les coordonnées d'un utilisateur dans la grille
+ * Classe permettant de connaitre les coordonnï¿½es d'un utilisateur dans la grille
  */
 public class Coordinate {
-    //Varaibles de coordonnées
+    //Varaibles de coordonnï¿½es
     private double x;
     private double y;
 
     /**
-     * Constructeur où les coordonnées sont initialisées
+     * Constructeur oï¿½ les coordonnï¿½es sont initialisï¿½es
      * @param px (double)
      * @param py (double)
      */
@@ -22,7 +23,7 @@ public class Coordinate {
     }
 
     /**
-     * Surcharge de la méthode equals pour savoir si une classe est égale à celle-ci
+     * Surcharge de la mï¿½thode equals pour savoir si une classe est ï¿½gale ï¿½ celle-ci
      * @param other (Object)
      * @return (boolean)
      */
@@ -37,7 +38,7 @@ public class Coordinate {
     }
 
     /**
-     * Hash identique pour deux points aux memes coordonnées
+     * Hash identique pour deux points aux memes coordonnï¿½es
      * @return (int)
      */
     @Override
@@ -58,7 +59,7 @@ public class Coordinate {
     }
 
     /**
-     * Permet d'obtenir le x de la coordonnée
+     * Permet d'obtenir le x de la coordonnï¿½e
      * @return x (double)
      */
     public double getX() {
@@ -66,7 +67,7 @@ public class Coordinate {
     }
 
     /**
-     * Permet d'obtenir le y de la coordonnée
+     * Permet d'obtenir le y de la coordonnï¿½e
      * @return y (double)
      */
     public double getY() {
@@ -74,7 +75,7 @@ public class Coordinate {
     }
 
     /**
-     * Permet d'obtenir les coordonnées en String
+     * Permet d'obtenir les coordonnï¿½es en String
      * @return (String)
      */
     @Override
@@ -83,7 +84,7 @@ public class Coordinate {
     }
 
     /**
-     * Pour changer le x et le y des coordonnées
+     * Pour changer le x et le y des coordonnï¿½es
      * @param x (double)
      * @param y (double)
      */
