@@ -2,7 +2,7 @@
   "kitchen": {
     "label": "on",
     "background": "green",
-    "coords": [],
+    "coords": [0, 0, 200, 200],
     "objects": {
       "microwave": {
         "technology" : "wifi",
