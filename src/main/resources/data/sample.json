@@ -1,28 +1,30 @@
 {
-  "kitchen": {
-    "label": "on",
-    "background": "green",
-    "coords": [0, 0, 200, 200],
-    "objects": {
-      "microwave": {
-        "technology" : "wifi",
-        "coords": [10, 20]
-      },
-      "coffee_machine": {
-        "technology" : "wifi",
-        "coords": [10, 30]
+  "rooms": [
+    {
+      "label": "kitchen",
+      "background": "#B4EEB4",
+      "coords": [0, 0, 200, 200],
+      "objects": {
+        "microwave": {
+          "technology" : "wifi",
+          "coords": [10, 20]
+        },
+        "coffee_machine": {
+          "technology" : "wifi",
+          "coords": [10, 30]
+        }
+      }
+    },
+    {
+      "label": "bathroom",
+      "background": "#AFEEEE",
+      "coords": [200, 0, 200, 200],
+      "objects": {
+        "hair_dryer": {
+          "technology" : "wifi",
+          "coords": [30, 20]
+        }
       }
     }
-  },
-  "bathroom": {
-    "label": "bathroom",
-    "background": "blue",
-    "coords": [],
-    "objects": {
-      "hair_dryer": {
-        "technology" : "wifi",
-        "coords": [30, 20]
-      }
-    }
-  }
+  ]
 }

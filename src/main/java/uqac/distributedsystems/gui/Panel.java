@@ -1,11 +1,12 @@
 package uqac.distributedsystems.gui;
 
-import uqac.distributedsystems.model.Coordinate;
 import uqac.distributedsystems.model.Room;
+import uqac.distributedsystems.tools.Helper;
+import uqac.distributedsystems.tools.Parser;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -20,14 +21,16 @@ public class Panel extends JPanel {
 	 * @param d the d
 	 */
 	Panel(Dimension d){
-		System.out.println(d);
+		// default 700x700
 		this.setSize(d);
 	}
 
 	public void paintComponent(Graphics g){
-		//x1, y1, width, height
-		Room room = new Room("kitchen", new Coordinate(0, 0), 200, 200, Color.BLUE);
-		room.paintComponent(g);
+		ArrayList<Room> rooms = Parser.getFormattedDataFromJson(Helper.getResourcesPath() + "/data/sample.json");
+		// paint rooms
+		for (Room room: rooms) {
+			room.paintComponent(g);
+		}
 
 		//object dot :
 /*		g.setColor(Color.RED);
