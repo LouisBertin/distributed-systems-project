@@ -2,11 +2,14 @@ package uqac.distributedsystems.model;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Device extends JComponent {
 	private String name;
 	private String technology;
 	private Coordinate coords;
+
+	private ArrayList<Device> neighbourhood = new ArrayList<>();
 
 	public Device(String name, String technology, Coordinate coords) {
 		this.name = name;
@@ -42,5 +45,14 @@ public class Device extends JComponent {
 		g.fillOval(this.getCoords().getX(), this.getCoords().getY(), 8, 8);
 		g.drawString(this.getName(), this.getCoords().getX(), this.getCoords().getY());
 	}
+
+	public void addNeighbour(Device d){
+		neighbourhood.add(d);
+	}
+
+	public ArrayList<Device> getNeighbourhood(){
+		return neighbourhood;
+	}
+
 
 }
