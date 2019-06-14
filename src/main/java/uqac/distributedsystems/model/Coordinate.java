@@ -9,15 +9,15 @@ import java.lang.Object;
  */
 public class Coordinate {
     //Varaibles de coordonn�es
-    private double x;
-    private double y;
+    private int x;
+    private int y;
 
     /**
      * Constructeur o� les coordonn�es sont initialis�es
-     * @param px (double)
-     * @param py (double)
+     * @param px (int)
+     * @param py (int)
      */
-    public Coordinate(double px, double py){
+    public Coordinate(int px, int py){
         x=px;
         y=py;
     }
@@ -60,17 +60,17 @@ public class Coordinate {
 
     /**
      * Permet d'obtenir le x de la coordonn�e
-     * @return x (double)
+     * @return x (int)
      */
-    public double getX() {
+    public int getX() {
         return x;
     }
 
     /**
      * Permet d'obtenir le y de la coordonn�e
-     * @return y (double)
+     * @return y (int)
      */
-    public double getY() {
+    public int getY() {
         return y;
     }
 
@@ -85,10 +85,10 @@ public class Coordinate {
 
     /**
      * Pour changer le x et le y des coordonn�es
-     * @param x (double)
-     * @param y (double)
+     * @param x (int)
+     * @param y (int)
      */
-    public void set(double x, double y) {
+    public void set(int x, int y) {
         this.x = x;
         this.y = y;
     }

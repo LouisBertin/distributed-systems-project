@@ -1,5 +1,7 @@
+package uqac.distributedsystems.tools;
+
 /**
- * The type Helper.
+ * The type uqac.distributedsystems.tools.Helper.
  */
 public class Helper {
     /**
@@ -7,7 +9,7 @@ public class Helper {
      *
      * @return the project path
      */
-    protected static String getProjectPath() {
+    public static String getProjectPath() {
         return System.getProperty("user.dir") + "/src/main";
     }
 
@@ -16,7 +18,7 @@ public class Helper {
      *
      * @return the resources path
      */
-    protected static String getResourcesPath() {
+    public static String getResourcesPath() {
         return System.getProperty("user.dir") + "/src/main/resources";
     }
 }
