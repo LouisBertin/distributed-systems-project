@@ -45,7 +45,6 @@ public class Device extends JComponent {
 		g.fillOval(this.getCoords().getX(), this.getCoords().getY(), 8, 8);
 		g.drawString(this.getName(), this.getCoords().getX(), this.getCoords().getY());
 		for (Device neighboor: neighbourhood) {
-			System.out.println(this.name + " " + neighboor.getName());
 			g.setColor(Color.BLUE);
 			g.drawLine(neighboor.getCoords().getX() + 4,neighboor.getCoords().getY() + 4, this.getCoords().getX() + 4, this.getCoords().getY() + 4);
 		}
@@ -58,6 +57,4 @@ public class Device extends JComponent {
 	public ArrayList<Device> getNeighbourhood(){
 		return neighbourhood;
 	}
-
-
 }

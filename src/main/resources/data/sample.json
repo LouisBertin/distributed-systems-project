@@ -3,15 +3,15 @@
     {
       "label": "kitchen",
       "background": "#B4EEB4",
-      "coords": [0, 0, 200, 200],
+      "coords": [0, 0, 200, 300],
       "devices": [
         {
-          "name": "microwave",
+          "name": "microwave1",
           "technology" : "wifi",
           "coords": [10, 20]
         },
         {
-          "name": "coffee_machine",
+          "name": "coffee_machine1",
           "technology" : "wifi",
           "coords": [100, 30]
         }
@@ -20,12 +20,90 @@
     {
       "label": "bathroom",
       "background": "#AFEEEE",
-      "coords": [200, 0, 200, 200],
+      "coords": [200, 0, 200, 300],
       "devices": [
         {
-          "name": "toothbrush",
+          "name": "toothbrush1",
           "technology" : "wifi",
           "coords": [300, 20]
+        }
+      ]
+    },
+    {
+      "label": "room1",
+      "background": "#FFC0CB",
+      "coords": [400, 0, 300, 300],
+      "devices": [
+        {
+          "name": "Tv1",
+          "technology" : "wifi",
+          "coords": [500, 200]
+        },{
+          "name": "Clock1",
+          "technology" : "wifi",
+          "coords": [420, 50]
+        }
+      ]
+    },
+    {
+      "label": "kitchen",
+      "background": "#B4EEB4",
+      "coords": [0, 400, 200, 300],
+      "devices": [
+        {
+          "name": "microwave2",
+          "technology" : "wifi",
+          "coords": [10, 620]
+        },
+        {
+          "name": "coffee_machine2",
+          "technology" : "wifi",
+          "coords": [100, 630]
+        }
+      ]
+    },
+    {
+      "label": "bathroom",
+      "background": "#AFEEEE",
+      "coords": [200, 400, 200, 300],
+      "devices": [
+        {
+          "name": "toothbrush2",
+          "technology" : "wifi",
+          "coords": [300, 420]
+        },
+        {
+          "name": "hair_dryer",
+          "technology" : "wifi",
+          "coords": [250, 620]
+        }
+      ]
+    },
+    {
+      "label": "room1",
+      "background": "#FFC0CB",
+      "coords": [400, 400, 300, 300],
+      "devices": [
+        {
+          "name": "Tv2",
+          "technology" : "wifi",
+          "coords": [500, 650]
+        },{
+          "name": "Clock2",
+          "technology" : "wifi",
+          "coords": [520, 550]
+        }
+      ]
+    },
+    {
+      "label": "corridor",
+      "background": "#FFFF7F",
+      "coords": [0, 300, 700, 100],
+      "devices": [
+        {
+          "name": "drone",
+          "technology" : "wifi",
+          "coords": [450, 350]
         }
       ]
     }
