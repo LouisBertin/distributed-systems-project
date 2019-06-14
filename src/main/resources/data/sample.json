@@ -2,7 +2,7 @@
   "kitchen": {
     "label": "on",
     "background": "green",
-    "coords": [],
+    "coords": [0, 0],
     "objects": {
       "microwave": {
         "technology" : "wifi",
@@ -10,18 +10,18 @@
       },
       "coffee_machine": {
         "technology" : "wifi",
-        "coords": [10, 30]
+        "coords": [10, 50]
       }
     }
   },
   "bathroom": {
     "label": "bathroom",
     "background": "blue",
-    "coords": [],
+    "coords": [100, 0],
     "objects": {
       "hair_dryer": {
         "technology" : "wifi",
-        "coords": [30, 20]
+        "coords": [130, 20]
       }
     }
   }

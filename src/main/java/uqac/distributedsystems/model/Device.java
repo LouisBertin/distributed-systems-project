@@ -30,6 +30,4 @@ public class Device {
 	public void setCoords(Coordinate coords) {
 		this.coords = coords;
 	}
-	
-	
 }

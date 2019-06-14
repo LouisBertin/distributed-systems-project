@@ -1,17 +1,19 @@
 package uqac.distributedsystems.gui;
 
-import java.awt.FlowLayout;
+import uqac.distributedsystems.model.Room;
+
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 public class Frame extends JFrame{
-	public Frame(){                
+
+	public Frame(ArrayList<Room> rooms){
 	    this.setTitle("Project");
 	    this.setSize(700, 700);
 	    this.setLocationRelativeTo(null);               
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    this.setContentPane(new Panel(this.getSize()));	    
+	    this.setContentPane(new Panel(this.getSize(), rooms));
 
 	    this.setVisible(true);
 	  }    

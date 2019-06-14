@@ -8,15 +8,16 @@ public class Room {
 	private Coordinate coords;
 	private int width;
 	private int height;
-	private Color backgorund;
+	private Color background;
 	private ArrayList<Device> devices;		
 	
-	public Room(String label, Coordinate coords, int width, int height, Color backgorund) {
+	public Room(String label, Coordinate coords, int width, int height, Color background) {
 		this.label = label;
 		this.coords = coords;
 		this.width = width;
 		this.height = height;
-		this.backgorund = backgorund;
+		this.background = background;
+		devices = new ArrayList<>();
 	}
 	
 	public void addDevice(Device device) {
@@ -51,11 +52,11 @@ public class Room {
 	public void setHeight(int height) {
 		this.height = height;
 	}
-	public Color getBackgorund() {
-		return backgorund;
+	public Color getBackground() {
+		return background;
 	}
-	public void setBackgorund(Color backgorund) {
-		this.backgorund = backgorund;
+	public void setBackground(Color background) {
+		this.background = background;
 	}
 	public ArrayList<Device> getDevice() {
 		return devices;
