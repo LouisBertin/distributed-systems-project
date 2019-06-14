@@ -4,27 +4,30 @@
       "label": "kitchen",
       "background": "#B4EEB4",
       "coords": [0, 0, 200, 200],
-      "objects": {
-        "microwave": {
+      "devices": [
+        {
+          "name": "microwave",
           "technology" : "wifi",
           "coords": [10, 20]
         },
-        "coffee_machine": {
+        {
+          "name": "coffee_machine",
           "technology" : "wifi",
-          "coords": [10, 30]
+          "coords": [100, 30]
         }
-      }
+      ]
     },
     {
       "label": "bathroom",
       "background": "#AFEEEE",
       "coords": [200, 0, 200, 200],
-      "objects": {
-        "hair_dryer": {
+      "devices": [
+        {
+          "name": "toothbrush",
           "technology" : "wifi",
-          "coords": [30, 20]
+          "coords": [300, 20]
         }
-      }
+      ]
     }
   ]
 }

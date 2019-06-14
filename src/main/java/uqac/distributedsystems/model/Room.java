@@ -30,11 +30,7 @@ public class Room extends JComponent {
         this.width = width;
         this.height = height;
         this.background = background;
-    }
-
-    public void paintComponent(Graphics g) {
-        g.setColor(this.getBackground());
-        g.fillRect(this.getCoords().getX(), this.getCoords().getY(), this.getWidth(), this.getHeight());
+        this.devices = new ArrayList<Device>();
     }
 
     /**
@@ -130,7 +126,7 @@ public class Room extends JComponent {
      *
      * @return the device
      */
-    public ArrayList<Device> getDevice() {
+    public ArrayList<Device> getDevices() {
         return devices;
     }
 
@@ -139,7 +135,16 @@ public class Room extends JComponent {
      *
      * @param devices the devices
      */
-    public void setDevice(ArrayList<Device> devices) {
+    public void setDevices(ArrayList<Device> devices) {
         this.devices = devices;
+    }
+
+    /**
+     * paint Component
+     * @param g Graphics
+     */
+    public void paintComponent(Graphics g) {
+        g.setColor(this.getBackground());
+        g.fillRect(this.getCoords().getX(), this.getCoords().getY(), this.getWidth(), this.getHeight());
     }
 }

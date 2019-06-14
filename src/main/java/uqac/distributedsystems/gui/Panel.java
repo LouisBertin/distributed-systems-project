@@ -1,5 +1,6 @@
 package uqac.distributedsystems.gui;
 
+import uqac.distributedsystems.model.Device;
 import uqac.distributedsystems.model.Room;
 import uqac.distributedsystems.tools.Helper;
 import uqac.distributedsystems.tools.Parser;
@@ -30,12 +31,10 @@ public class Panel extends JPanel {
 		// paint rooms
 		for (Room room: rooms) {
 			room.paintComponent(g);
+			for (Device device: room.getDevices()) {
+				device.paintComponent(g);
+			}
 		}
-
-		//object dot :
-/*		g.setColor(Color.RED);
-		g.fillOval(20, 20, 8, 8);
-		g.drawString("Wi-Fi Direct", 35, 35);*/
 	}
 
 }

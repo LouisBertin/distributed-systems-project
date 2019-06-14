@@ -1,17 +1,19 @@
 package uqac.distributedsystems.model;
 
-public class Device {
+import javax.swing.*;
+import java.awt.*;
+
+public class Device extends JComponent {
 	private String name;
 	private String technology;
-	private Coordinate coords;	
-	
+	private Coordinate coords;
+
 	public Device(String name, String technology, Coordinate coords) {
-		super();
 		this.name = name;
 		this.technology = technology;
 		this.coords = coords;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -30,6 +32,15 @@ public class Device {
 	public void setCoords(Coordinate coords) {
 		this.coords = coords;
 	}
-	
-	
+
+	/**
+	 * paint Component
+	 * @param g Graphics
+	 */
+	public void paintComponent(Graphics g) {
+		g.setColor(Color.RED);
+		g.fillOval(this.getCoords().getX(), this.getCoords().getY(), 8, 8);
+		g.drawString(this.getName(), this.getCoords().getX(), this.getCoords().getY());
+	}
+
 }
