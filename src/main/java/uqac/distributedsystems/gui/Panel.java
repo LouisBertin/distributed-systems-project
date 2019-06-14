@@ -1,5 +1,6 @@
 package uqac.distributedsystems.gui;
 
+import uqac.distributedsystems.astar.Astar;
 import uqac.distributedsystems.model.Device;
 import uqac.distributedsystems.model.Room;
 import uqac.distributedsystems.tools.Helper;
@@ -28,6 +29,7 @@ public class Panel extends JPanel {
 
 	public void paintComponent(Graphics g){
 		ArrayList<Room> rooms = Parser.getFormattedDataFromJson(Helper.getResourcesPath() + "/data/sample.json");
+		Astar.network(rooms);
 		// paint rooms
 		for (Room room: rooms) {
 			room.paintComponent(g);

@@ -9,7 +9,7 @@ public class Astar {
     Device nearestDevice;
     private double min = 1000;
 
-    public void network(ArrayList<Room> rooms){
+    public static void network(ArrayList<Room> rooms){
         ArrayList<Device> devices = new ArrayList<>();
         for (Room room : rooms) {
             ArrayList<Device> ds = room.getDevices();
@@ -28,18 +28,18 @@ public class Astar {
 
                 switch (techno1){
                     case "wifi" :
-                        range1 = 1.1;
+                        range1 = 1.1 * 100;
                         break;
                     case "lora" :
-                        range1 = 1.7;
+                        range1 = 1.7 * 100;
                         break;
                 }
                 switch (techno2){
                     case "wifi" :
-                        range2 = 1.1;
+                        range2 = 1.1 * 100;
                         break;
                     case "lora" :
-                        range2 = 1.7;
+                        range2 = 1.7 * 100;
                         break;
                 }
                 if(distance <= range1 +range2){
