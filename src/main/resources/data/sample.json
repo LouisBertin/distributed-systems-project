@@ -6,12 +6,12 @@
       "coords": [0, 0, 200, 300],
       "devices": [
         {
-          "name": "microwave1",
-          "technology" : "wifi",
+          "name": "microwave",
+          "technology" : "lora",
           "coords": [10, 20]
         },
         {
-          "name": "coffee_machine1",
+          "name": "coffee_machine",
           "technology" : "wifi",
           "coords": [100, 30]
         }
@@ -23,9 +23,14 @@
       "coords": [200, 0, 200, 300],
       "devices": [
         {
-          "name": "toothbrush1",
+          "name": "toothbrush",
           "technology" : "wifi",
           "coords": [300, 20]
+        },
+        {
+          "name": "mirror",
+          "technology" : "lora",
+          "coords": [200, 120]
         }
       ]
     },
@@ -35,29 +40,35 @@
       "coords": [400, 0, 300, 300],
       "devices": [
         {
-          "name": "Tv1",
+          "name": "clock1",
           "technology" : "wifi",
-          "coords": [500, 200]
-        },{
-          "name": "Clock1",
+          "coords": [620, 50]
+        },
+        {
+          "name": "clock2",
           "technology" : "wifi",
           "coords": [420, 50]
+        },
+        {
+          "name": "computer",
+          "technology" : "lora",
+          "coords": [520, 250]
         }
       ]
     },
     {
-      "label": "kitchen",
+      "label": "living room",
       "background": "#B4EEB4",
       "coords": [0, 400, 200, 300],
       "devices": [
         {
-          "name": "microwave2",
+          "name": "google_home",
           "technology" : "wifi",
           "coords": [10, 620]
         },
         {
-          "name": "coffee_machine2",
-          "technology" : "wifi",
+          "name": "radio",
+          "technology" : "lora",
           "coords": [100, 630]
         }
       ]
@@ -80,16 +91,16 @@
       ]
     },
     {
-      "label": "room1",
+      "label": "room2",
       "background": "#FFC0CB",
       "coords": [400, 400, 300, 300],
       "devices": [
         {
-          "name": "Tv2",
+          "name": "tv2",
           "technology" : "wifi",
           "coords": [500, 650]
         },{
-          "name": "Clock2",
+          "name": "clock3",
           "technology" : "wifi",
           "coords": [520, 550]
         }
@@ -101,9 +112,14 @@
       "coords": [0, 300, 700, 100],
       "devices": [
         {
-          "name": "drone",
+          "name": "lamp1",
           "technology" : "wifi",
           "coords": [450, 350]
+        },
+        {
+          "name": "lamp2",
+          "technology" : "wifi",
+          "coords": [150, 320]
         }
       ]
     }

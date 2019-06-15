@@ -6,8 +6,7 @@ import uqac.distributedsystems.model.Room;
 import uqac.distributedsystems.tools.Helper;
 import uqac.distributedsystems.tools.Parser;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -35,15 +34,27 @@ public class Panel extends JPanel {
 		// paint rooms
 		for (Room room: rooms) {
 			room.paintComponent(g);
-			for (Device device: room.getDevices()) {
-				this.devices.add(device);
-				device.paintComponent(g);
-			}
+			devices.addAll(room.getDevices());
 		}
-
+		//Pour éviter tout problème de d'affichage
+		for (Device device : devices) {
+			device.paintComponent(g);
+		}
 	}
 
-	public void sendMessage(){
+	private void affichage(ArrayList<Device> chemin){
+		Graphics g = getGraphics();
+		g.setColor(Color.GREEN);
+
+		for(int i = 0; i < chemin.size()-2; i++){
+			Device d1 = chemin.get(i);
+			Device d2 = chemin.get(i+1);
+			g.drawLine(d1.getCoords().getX() + 4,d1.getCoords().getY() + 4,
+					d2.getCoords().getX() + 4, d2.getCoords().getY() + 4);
+		}
+	}
+
+	void sendMessage(){
 		Astar a = new Astar();
 
 		Random rand = new Random();
@@ -59,6 +70,7 @@ public class Panel extends JPanel {
 			for (Device d:de) {
 				System.out.println(d.toString());
 			}
+			affichage(de);
 		}
 	}
 
