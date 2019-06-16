@@ -26,11 +26,6 @@
           "name": "toothbrush",
           "technology" : "wifi",
           "coords": [300, 20]
-        },
-        {
-          "name": "mirror",
-          "technology" : "lora",
-          "coords": [200, 120]
         }
       ]
     },
@@ -43,11 +38,6 @@
           "name": "clock1",
           "technology" : "wifi",
           "coords": [620, 50]
-        },
-        {
-          "name": "clock2",
-          "technology" : "wifi",
-          "coords": [420, 50]
         },
         {
           "name": "computer",

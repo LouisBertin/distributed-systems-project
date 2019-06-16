@@ -105,48 +105,44 @@ public class Astar {
     public static void network(ArrayList<Room> rooms) {
         ArrayList<Device> devices = new ArrayList<>();
         for (Room room : rooms) {
-            ArrayList<Device> ds = room.getDevices();
-            for (Device d : ds) {
-                devices.add(d);
-            }
+            devices.addAll(room.getDevices());
         }
 
         for (Device d1 : devices) {
             for (Device d2 : devices) {
-                double distance = d1.getCoords().distance(d2.getCoords());
-                String techno1 = d1.getTechnology();
-                String techno2 = d2.getTechnology();
-                double range1 = 0;
-                double range2 = 0;
-
-                switch (techno1) {
-                    case "wifi":
-                        range1 = 1.1 * 100;
-                        break;
-                    case "lora":
-                        range1 = 1.7 * 100;
-                        break;
-                }
-                switch (techno2) {
-                    case "wifi":
-                        range2 = 1.1 * 100;
-                        break;
-                    case "lora":
-                        range2 = 1.7 * 100;
-                        break;
-                }
-                if (distance <= range1 + range2) {
+                if (d1.getCoords().distance(d2.getCoords()) <= calculateRange(d1.getTechnology(), d2.getTechnology())) {
                     if(!d1.getName().equals(d2.getName()))
                         d1.addNeighbour(d2);
                 }
             }
         }
     }
+    public static double calculateRange(String techno1, String techno2){
+        double range1 = 0;
+        double range2 = 0;
+        switch (techno1) {
+            case "wifi":
+                range1 = 1.1 * 100;
+                break;
+            case "lora":
+                range1 = 1.7 * 100;
+                break;
+        }
+        switch (techno2) {
+            case "wifi":
+                range2 = 1.1 * 100;
+                break;
+            case "lora":
+                range2 = 1.7 * 100;
+                break;
+        }
+        return range1 + range2;
+    }
 
     /**
      * recherche A* standard, à partir d'un point passé en paramètre
      *
-     * @param node
+     * @param node (Node)
      * @return null si pas de chemin, sinon le point d'arrivé ("but")
      */
     private Node search(Node node,boolean b) {
@@ -214,5 +210,13 @@ public class Astar {
             }
         }
         return curNode;
+    }
+
+    /**
+     * retourne le point le plus proche du node sur lequel on appelle la methode
+     * @return nearestNode (Node)
+     */
+    public Node getNearestNode() {
+        return nearestNode;
     }
 }
