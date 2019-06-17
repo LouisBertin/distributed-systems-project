@@ -79,10 +79,24 @@ public class Panel extends JPanel {
 			Device drone = new Device("drone","wifi", new Coordinate(10, 350));
 			drone.paintComponent(getGraphics());//Affichage du drone
 			Device nearest = a.getNearestNode().getDevice();
-
 			moveDrone(drone, nearest);
-			//Le drone vient de recupperer le message, il va devoir se préparer à l'envoyer a l'autre réseau.
-			moveDrone(drone, devices.get(n2));
+			nearest.paintComponent(getGraphics());
+			try {
+				Thread.sleep(1500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			//Le drone vient de recuperer le message, il va devoir se préparer à l'envoyer a l'autre réseau.
+			Astar a2 = new Astar();
+			a2.execute(devices.get(n2), devices.get(n1));
+
+			moveDrone(drone, a2.getNearestNode().getDevice());
+			a2.getNearestNode().getDevice().paintComponent(getGraphics());
+			try {
+				Thread.sleep(1500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 
 			System.out.println("Message transmis entre " + devices.get(n1).getName() + " et " + devices.get(n2).getName());
 
@@ -91,17 +105,18 @@ public class Panel extends JPanel {
 				int y = drone.getCoords().getY();
 
 				if(x < 10){
-					drone.setCoords(new Coordinate(x+10, y));
+					x += 10;
 				}
 				if(x > 10){
-					drone.setCoords(new Coordinate(x-10, y));
+					 x -= 10;
 				}
 				if(y < 350){
-					drone.setCoords(new Coordinate(x, y+10));
+					y += 10;
 				}
 				if(y > 350){
-					drone.setCoords(new Coordinate(x, y-10));
+					y -= 10;
 				}
+				drone.setCoords(new Coordinate(x, y));
 				paintComponent(getGraphics());
 				drone.paintComponent(getGraphics());
 				try {

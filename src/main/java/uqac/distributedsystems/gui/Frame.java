@@ -1,9 +1,6 @@
 package uqac.distributedsystems.gui;
 
-import java.awt.FlowLayout;
-
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 public class Frame extends JFrame{
 	private Panel panel;

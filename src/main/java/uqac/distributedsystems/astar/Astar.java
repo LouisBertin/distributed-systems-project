@@ -145,8 +145,7 @@ public class Astar {
      * @param node (Node)
      * @return null si pas de chemin, sinon le point d'arrivé ("but")
      */
-    private Node search(Node node,boolean b) {
-        ArrayList<Node> closedList = new ArrayList<>();
+    private Node search(Node node) {
         ArrayList<Node> openList = new ArrayList<>();
         openList.add(node);
 
@@ -154,7 +153,6 @@ public class Astar {
             Node curNode = selectNode(openList);
 
             openList.remove(curNode);
-            closedList.add(curNode);
             if (curNode.getPos().equals(but)) {
                 return curNode;
             }else if(curNode.getPos().distance(but)<min){
@@ -188,7 +186,7 @@ public class Astar {
         nearestNode = null;
         this.but = but.getCoords();
         Node node = new Node(u, null);
-        Node finish = search(node,false);
+        Node finish = search(node);
         if (finish != null)
             return finish.toTrail();
         else
