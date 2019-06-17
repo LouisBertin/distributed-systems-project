@@ -9,6 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import uqac.distributedsystems.model.Coordinate;
 import uqac.distributedsystems.model.Device;
+import uqac.distributedsystems.model.Gateway;
 import uqac.distributedsystems.model.Room;
 
 /**
@@ -42,7 +43,7 @@ public class Parser {
      * @param JsonFilePath the json file path
      * @return the formatted data from json
      */
-    public static ArrayList<Room> getFormattedDataFromJson(String JsonFilePath) {
+    public static ArrayList<Room> getRoomsFromJson(String JsonFilePath) {
         JSONObject jsonObject = getDataFromJson(JsonFilePath);
 
         JSONArray rooms = null;
@@ -68,6 +69,39 @@ public class Parser {
                     room.addDevice(device);
                 }
                 arrayList.add(room);
+            }
+        }
+
+        return arrayList;
+    }
+
+    /**
+     * Gets gateways from json.
+     *
+     * @param JsonFilePath the json file path
+     * @return the gateways from json
+     */
+    public static ArrayList<Gateway> getGatewaysFromJson(String JsonFilePath) {
+        JSONObject jsonObject = getDataFromJson(JsonFilePath);
+
+        JSONArray gateways = null;
+        if (jsonObject != null) {
+            gateways = jsonObject.getJSONArray("gateways");
+        }
+        ArrayList<Gateway> arrayList = new ArrayList<>();
+        // build gateway array
+        if (gateways != null) {
+            for (int i = 0; i < gateways.length(); i++) {
+                String label = gateways.getJSONObject(i).getString("label");
+                String technology = gateways.getJSONObject(i).getString("technology");
+                Coordinate departure = new Coordinate(gateways.getJSONObject(i).getJSONArray("coords").getJSONArray(0).getInt(0), gateways.getJSONObject(i).getJSONArray("coords").getJSONArray(0).getInt(1));
+                Coordinate arrival = new Coordinate(gateways.getJSONObject(i).getJSONArray("coords").getJSONArray(1).getInt(0), gateways.getJSONObject(i).getJSONArray("coords").getJSONArray(1).getInt(1));
+                Coordinate[] coordinates = new Coordinate[2];
+                coordinates[0] = departure;
+                coordinates[1] = arrival;
+                Gateway gateway = new Gateway(label, technology, coordinates);
+                // add gateway
+                arrayList.add(gateway);
             }
         }
 
