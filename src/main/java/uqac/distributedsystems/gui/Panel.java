@@ -30,7 +30,7 @@ public class Panel extends JPanel {
 	}
 
 	public void paintComponent(Graphics g){
-		ArrayList<Room> rooms = Parser.getFormattedDataFromJson(Helper.getResourcesPath() + "/data/sample2.json");
+		ArrayList<Room> rooms = Parser.getFormattedDataFromJson(Helper.getResourcesPath() + (Helper.getPropertyValue("input_file")));
 		Astar.network(rooms);
 		// paint rooms
 		for (Room room: rooms) {
