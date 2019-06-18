@@ -1,4 +1,5 @@
 import uqac.distributedsystems.gui.Frame;
+
 /**
  * The type Main.
  */
@@ -12,6 +13,8 @@ public class Main {
         Frame f = new Frame();
         // get gateways
         //Parser.getGatewaysFromJson(Helper.getResourcesPath() + (Helper.getPropertyValue("input_file")));
+        // get drone
+        //Parser.getDrone(Helper.getResourcesPath() + (Helper.getPropertyValue("input_file")));
 
         try {
             Thread.sleep(2500);

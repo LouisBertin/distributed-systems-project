@@ -62,6 +62,9 @@ public class Parser {
                 // handle devices
                 JSONArray devices = rooms.getJSONObject(i).getJSONArray("devices");
                 for (int j = 0; j < devices.length(); j++) {
+                    if (devices.getJSONObject(j).has("isDrone")) {
+                        continue;
+                    }
                     String name = devices.getJSONObject(j).getString("name");
                     String technology = devices.getJSONObject(j).getString("technology");
                     JSONArray coordinates = devices.getJSONObject(j).getJSONArray("coords");
@@ -106,5 +109,38 @@ public class Parser {
         }
 
         return arrayList;
+    }
+
+    /**
+     * Gets drone.
+     *
+     * @param JsonFilePath the json file path
+     * @return the drone
+     */
+    public static Device getDrone(String JsonFilePath) {
+        JSONObject jsonObject = getDataFromJson(JsonFilePath);
+
+        JSONArray rooms = null;
+        if (jsonObject != null) {
+            rooms = jsonObject.getJSONArray("rooms");
+        }
+        // build Room array
+        if (rooms != null) {
+            for (int i = 0; i < rooms.length(); i++) {
+                // handle devices
+                JSONArray devices = rooms.getJSONObject(i).getJSONArray("devices");
+                for (int j = 0; j < devices.length(); j++) {
+                    if (devices.getJSONObject(j).has("isDrone")) {
+                        String name = devices.getJSONObject(j).getString("name");
+                        String technology = devices.getJSONObject(j).getString("technology");
+                        JSONArray coordinates = devices.getJSONObject(j).getJSONArray("coords");
+
+                        return new Device(name, technology, new Coordinate(coordinates.getInt(0), coordinates.getInt(1)));
+                    }
+                }
+            }
+        }
+
+        return null;
     }
 }
