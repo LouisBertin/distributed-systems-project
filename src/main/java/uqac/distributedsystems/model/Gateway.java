@@ -1,5 +1,8 @@
 package uqac.distributedsystems.model;
 
+import java.awt.*;
+import java.util.Random;
+
 /**
  * The type Gateway.
  */
@@ -7,6 +10,9 @@ public class Gateway {
     private String name;
     private String technology;
     private Coordinate[] coords = new Coordinate[2];
+    private Coordinate currentCoords;
+    private boolean b = false;
+    private boolean hasMessage = false;
 
     /**
      * Instantiates a new Gateway.
@@ -20,6 +26,7 @@ public class Gateway {
         this.technology = technology;
         this.coords[0] = coords[0];
         this.coords[1] = coords[1];
+        this.currentCoords = coords[0];
     }
 
     /**
@@ -74,5 +81,50 @@ public class Gateway {
      */
     public void setCoords(Coordinate[] coords) {
         this.coords = coords;
+    }
+
+    /**
+     * Get currentCoords
+     *
+     * @return the current coords
+     */
+    public Coordinate getCurrentCoords() {
+        return currentCoords;
+    }
+
+    /**
+     * Set currentsCoords
+     *
+     * @param currentCoords the current coords
+     */
+    public void setCurrentCoords(Coordinate currentCoords) {
+        this.currentCoords = currentCoords;
+    }
+
+    public void setHasMessage(){
+        hasMessage = !hasMessage;
+    }
+
+    public boolean isHasMessage() {
+        return hasMessage;
+    }
+
+    public void paintComponent(Graphics g) {
+        g.setColor(Color.RED);
+        g.fillOval(this.getCurrentCoords().getX(), this.getCurrentCoords().getY(), 8, 8);
+        g.drawString(this.getName(), this.getCurrentCoords().getX(), this.getCurrentCoords().getY());
+    }
+
+    public Coordinate getDestination(){
+        if(b){
+            return coords[1];
+        }
+        else{
+            return coords[0];
+        }
+    }
+
+    public void changeDestination(){
+        b = !b;
     }
 }

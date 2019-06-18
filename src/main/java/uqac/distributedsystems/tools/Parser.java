@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import uqac.distributedsystems.model.Coordinate;
 import uqac.distributedsystems.model.Device;
@@ -23,7 +24,7 @@ public class Parser {
      * @param JsonFilePath the json file path
      * @return the data from json
      */
-    public static JSONObject getDataFromJson(String JsonFilePath) {
+    private static JSONObject getDataFromJson(String JsonFilePath) {
         try {
             File file = new File(JsonFilePath);
             String content = FileUtils.readFileToString(file, "utf-8");
@@ -89,7 +90,11 @@ public class Parser {
 
         JSONArray gateways = null;
         if (jsonObject != null) {
-            gateways = jsonObject.getJSONArray("gateways");
+            try{
+                gateways = jsonObject.getJSONArray("gateways");
+            }catch (JSONException e){
+                return null;
+            }
         }
         ArrayList<Gateway> arrayList = new ArrayList<>();
         // build gateway array

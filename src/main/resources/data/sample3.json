@@ -14,12 +14,6 @@
           "name": "coffee_machine",
           "technology" : "wifi",
           "coords": [100, 30]
-        },
-        {
-          "name": "drone",
-          "technology" : "wifi",
-          "coords": [690, 350],
-          "isDrone": true
         }
       ]
     },
@@ -112,6 +106,24 @@
           "technology" : "wifi",
           "coords": [150, 320]
         }
+      ]
+    }
+  ],
+  "gateways": [
+    {
+      "label": "dog",
+      "technology" : "wifi",
+      "coords": [
+        [200, 100],
+        [300, 600]
+      ]
+    },
+    {
+      "label": "human",
+      "technology" : "wifi",
+      "coords": [
+        [600, 500],
+        [100, 100]
       ]
     }
   ]

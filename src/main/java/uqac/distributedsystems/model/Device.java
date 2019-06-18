@@ -71,4 +71,15 @@ public class Device extends JComponent {
 	public ArrayList<Device> getNeighbourhood(){
 		return neighbourhood;
 	}
+
+	public void removeNeighbour(Device d){
+		ArrayList<Device> removeDevice = new ArrayList<>();
+		for (Device device : neighbourhood) {
+			if(device.getName().equals(d.getName()))
+				removeDevice.add(device);
+		}
+		for (Device device :removeDevice) {
+			neighbourhood.remove(device);
+		}
+	}
 }
