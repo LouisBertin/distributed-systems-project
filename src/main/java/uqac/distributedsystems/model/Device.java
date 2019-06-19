@@ -82,4 +82,15 @@ public class Device extends JComponent {
 			neighbourhood.remove(device);
 		}
 	}
+
+	@Override
+	public boolean equals(Object other){
+		boolean result = false;
+		if (other instanceof Device) {
+			Device that = (Device) other;
+			if(that.getName().equals(name) && that.getCoords().equals(coords) && that.getTechnology().equals(technology))
+				result = true;
+		}
+		return result;
+	}
 }

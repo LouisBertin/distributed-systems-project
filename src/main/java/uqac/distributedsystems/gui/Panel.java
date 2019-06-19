@@ -9,10 +9,7 @@ import uqac.distributedsystems.tools.Helper;
 import uqac.distributedsystems.tools.Parser;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 import javax.swing.JPanel;
 
@@ -45,8 +42,15 @@ public class Panel extends JPanel {
 		// paint rooms
 		for (Room room: rooms) {
 			room.paintComponent(g);
-			devices.addAll(room.getDevices());
+			for (Device device :room.getDevices()) {
+				if(!devices.contains(device)){
+					devices.add(device);
+				}
+			}
 		}
+		Set<Device> set = new HashSet<>(devices) ;
+		devices = new ArrayList<>(set) ;
+
 		//Pour éviter tout problème de d'affichage
 		for (Device device : devices) {
 			device.paintComponent(g);
@@ -77,12 +81,15 @@ public class Panel extends JPanel {
 	void sendMessage(){
 		Astar a = new Astar();
 
-		Random rand = new Random();
-		int n1 = rand.nextInt(this.devices.size());
-		int n2 = rand.nextInt(this.devices.size());
-		while (devices.get(n1).getName().equals(devices.get(n2).getName())){
-			n2 = rand.nextInt(devices.size());
+		System.out.println("Point de départ");
+		int n1 = selectionPoint(devices);
+		System.out.println("Point d'arrivé");
+		int n2 = selectionPoint(devices);
+		while(n1 == n2){
+			System.out.println("Point d'arrivé");
+			n2 = selectionPoint(devices);
 		}
+
 		ArrayList<Device> de = a.execute(devices.get(n1), devices.get(n2));
 		System.out.println("N1 : " +devices.get(n1).getName() );
 		System.out.println("N2 : "+devices.get(n2).getName());
@@ -188,6 +195,21 @@ public class Panel extends JPanel {
 			}
 		}
 	}
+
+	private int selectionPoint(ArrayList<Device> d){
+		System.out.println("Choisissez parmis ces points : ");
+		for (int i = 0; i < d.size(); i++) {
+			System.out.println(i + ". " + d.get(i).getName());
+		}
+		Scanner scan = new Scanner(System.in);
+		String r = scan.nextLine();
+		try{
+			return Integer.parseInt(r);
+		}catch (Exception e){
+			return selectionPoint(d);
+		}
+	}
+
 	private Coordinate move(Device gateway, Coordinate destination){
 		int x = gateway.getCoords().getX();
 		int y = gateway.getCoords().getY();
