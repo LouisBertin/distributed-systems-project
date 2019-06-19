@@ -110,8 +110,13 @@ public class Panel extends JPanel {
 				drone.paintComponent(getGraphics());//Affichage du drone
 				a.execute(devices.get(n1), drone);
 				Device nearest = a.getNearestNode().getDevice();
-				moveDrone( nearest);
-				nearest.paintComponent(getGraphics());
+				affichage(a.execute(devices.get(n1), nearest));
+                try {
+                    Thread.sleep(1500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+				moveDrone(nearest);
 				try {
 					Thread.sleep(1500);
 				} catch (InterruptedException e) {
@@ -122,14 +127,18 @@ public class Panel extends JPanel {
 				a2.execute(devices.get(n2), drone);
 
 				moveDrone(a2.getNearestNode().getDevice());
-				a2.getNearestNode().getDevice().paintComponent(getGraphics()); //pour faire l'affichage du trait
 				try {
 					Thread.sleep(1500);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-
 				System.out.println("Message transmis entre " + devices.get(n1).getName() + " et " + devices.get(n2).getName());
+				affichage(a.execute(a2.getNearestNode().getDevice(), devices.get(n2)));
+                try {
+                    Thread.sleep(1500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
 				while(!drone.getCoords().equals(initialDronePosition)){
 					int x = drone.getCoords().getX();
@@ -180,9 +189,17 @@ public class Panel extends JPanel {
 						}
 						if(trail != null){
 							gateway.setHasMessage();
-							if(gateway.isHasMessage())
-								System.out.println(gateway.getName() + " a récupéré le message");
+							if(gateway.isHasMessage()){
+                                affichage(trail);
+                                System.out.println(gateway.getName() + " a récupéré le message");
+                                try {
+                                    Thread.sleep(1500);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
 							else{
+							    affichage(trail);
 								System.out.println(gateway.getName() + " a transmis le message");
 								b = false;
 							}
@@ -272,6 +289,7 @@ public class Panel extends JPanel {
 			}
 			cheminDrone = a.execute(goal, drone);
 		}
+        affichage(cheminDrone);
 	}
 
 }
