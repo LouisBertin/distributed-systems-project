@@ -10,6 +10,7 @@ public class Device extends JComponent {
 	private String name;
 	private String technology;
 	private Coordinate coords;
+	private boolean selection;
 
 	private ArrayList<Device> neighbourhood = new ArrayList<>();
 
@@ -19,6 +20,9 @@ public class Device extends JComponent {
 		this.coords = coords;
 	}
 
+	public void setSelection(boolean b){
+		selection = b;
+	}
 	public String getName() {
 		return name;
 	}
@@ -43,7 +47,10 @@ public class Device extends JComponent {
 	 * @param g Graphics
 	 */
 	public void paintComponent(Graphics g) {
-		g.setColor(Color.RED);
+		if(selection)
+			g.setColor(Color.BLUE);
+		else
+			g.setColor(Color.RED);
 		g.fillOval(this.getCoords().getX(), this.getCoords().getY(), 8, 8);
 		g.drawString(this.getName(), this.getCoords().getX(), this.getCoords().getY());
 

@@ -89,6 +89,9 @@ public class Panel extends JPanel {
 			System.out.println("Point d'arrivé");
 			n2 = selectionPoint(devices);
 		}
+		devices.get(n1).setSelection(true);
+		devices.get(n2).setSelection(true);
+		paintComponent(getGraphics());
 
 		ArrayList<Device> de = a.execute(devices.get(n1), devices.get(n2));
 		System.out.println("N1 : " +devices.get(n1).getName() );
