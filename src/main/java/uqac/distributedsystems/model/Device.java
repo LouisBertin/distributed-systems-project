@@ -6,6 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * The type Device
+ */
 public class Device extends JComponent {
 	private String name;
 	private String technology;
@@ -70,14 +73,27 @@ public class Device extends JComponent {
 		}
 	}
 
+	/**
+	 * Ajoute un voisin dans la liste
+	 * @param d (Device)
+	 */
 	public void addNeighbour(Device d){
 		neighbourhood.add(d);
 	}
 
+	/**
+	 * Pour obtenir tous les voisins
+	 *
+	 * @return (Arraylist<Device>)
+	 */
 	public ArrayList<Device> getNeighbourhood(){
 		return neighbourhood;
 	}
 
+	/**
+	 * Supprime le device de la liste des voisins
+	 * @param d (Device)
+	 */
 	public void removeNeighbour(Device d){
 		ArrayList<Device> removeDevice = new ArrayList<>();
 		for (Device device : neighbourhood) {

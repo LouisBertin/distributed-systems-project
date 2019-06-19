@@ -1,7 +1,6 @@
 package uqac.distributedsystems.model;
 
 import java.awt.*;
-import java.util.Random;
 
 /**
  * The type Gateway.
@@ -11,8 +10,8 @@ public class Gateway {
     private String technology;
     private Coordinate[] coords = new Coordinate[2];
     private Coordinate currentCoords;
-    private boolean b = false;
-    private boolean hasMessage = false;
+    private boolean b = false; //Boolean pour savoir ou on doit se diriger
+    private boolean hasMessage = false; //Boolean pour savoir si la passerelle a déjà récupéré le message
 
     /**
      * Instantiates a new Gateway.
@@ -101,20 +100,37 @@ public class Gateway {
         this.currentCoords = currentCoords;
     }
 
+    /**
+     * Pour changer la variable hsMessage
+     */
     public void setHasMessage(){
         hasMessage = !hasMessage;
     }
 
+    /**
+     * Pour savoir si la passerelle a le message ou pas
+     *
+     * @return hasMessage
+     */
     public boolean isHasMessage() {
         return hasMessage;
     }
 
+    /**
+     * Affiche le composant dans la fenetre
+     * @param g (Graphics)
+     */
     public void paintComponent(Graphics g) {
         g.setColor(Color.RED);
         g.fillOval(this.getCurrentCoords().getX(), this.getCurrentCoords().getY(), 8, 8);
         g.drawString(this.getName(), this.getCurrentCoords().getX(), this.getCurrentCoords().getY());
     }
 
+    /**
+     * Pour savoir où aller
+     *
+     * @return coord
+     */
     public Coordinate getDestination(){
         if(b){
             return coords[1];
@@ -124,6 +140,9 @@ public class Gateway {
         }
     }
 
+    /**
+     * Pour changer la destination
+     */
     public void changeDestination(){
         b = !b;
     }

@@ -6,6 +6,9 @@ import uqac.distributedsystems.model.Room;
 
 import java.util.ArrayList;
 
+/**
+ * The type Astar.
+ */
 public class Astar {
     private Coordinate but;
     private Node nearestNode;
@@ -18,6 +21,7 @@ public class Astar {
             devices.addAll(room.getDevices());
         }
 
+        //Permet d'éviter les doublons dans la liste des devices
         for (Device d1 : devices) {
             for (Device d2 : devices) {
                 if (d1.getCoords().distance(d2.getCoords()) <= calculateRange(d1.getTechnology(), d2.getTechnology())) {
@@ -28,13 +32,24 @@ public class Astar {
         }
     }
 
-    //Cette fonction calcule la portée de la technologie
+    /**
+     * Cette fonction calcule la portée de la technologie
+     *
+     * @param techno1 (String)
+     * @param techno2 (String)
+     * @return range
+     */
     public static double calculateRange(String techno1, String techno2){
         return getRange(techno1) + getRange(techno2);
     }
 
-    //Cette fonction retourne la portée de la techno
-    public static double getRange(String techno){
+    /**
+     * Cette fonction retourne la portée de la techno
+     *
+     * @param techno (String)
+     * @return range
+     */
+    private static double getRange(String techno){
         switch (techno) {
             case "wifi":
                 return 1.1 * 100;

@@ -36,6 +36,11 @@ public class Panel extends JPanel {
 			initialDronePosition = drone.getCoords();
 	}
 
+	/**
+	 * Affiche toutes les salles et tous les devices
+	 *
+	 * @param g (Graphics)
+	 */
 	public void paintComponent(Graphics g){
 		ArrayList<Room> rooms = Parser.getRoomsFromJson(Helper.getResourcesPath() + (Helper.getPropertyValue("input_file")));
 		Astar.network(rooms);
@@ -66,6 +71,11 @@ public class Panel extends JPanel {
 		}
 	}
 
+	/**
+	 * Affiche le chemin en vert
+	 *
+	 * @param chemin (ArrayList<Device>)
+	 */
 	private void affichage(ArrayList<Device> chemin){
 		Graphics g = getGraphics();
 		g.setColor(Color.GREEN);
@@ -77,9 +87,13 @@ public class Panel extends JPanel {
 		}
 	}
 
+	/**
+	 * Pour envoyer un message
+	 */
 	void sendMessage(){
 		Astar a = new Astar();
 
+		//Sélection des points de départ et d'arrivé
 		System.out.println("Point de départ");
 		int n1 = selectionPoint(devices);
 		System.out.println("Point d'arrivé");
@@ -92,6 +106,7 @@ public class Panel extends JPanel {
 		devices.get(n2).setSelection(true);
 		paintComponent(getGraphics());
 
+		//Regarde si un chemin existe
 		ArrayList<Device> de = a.execute(devices.get(n1), devices.get(n2));
 		System.out.println("N1 : " +devices.get(n1).getName() );
 		System.out.println("N2 : "+devices.get(n2).getName());
@@ -122,23 +137,23 @@ public class Panel extends JPanel {
 					e.printStackTrace();
 				}
 				//Le drone vient de recuperer le message, il va devoir se préparer à l'envoyer a l'autre réseau.
-				Astar a2 = new Astar();
-				a2.execute(devices.get(n2), drone);
+				a.execute(devices.get(n2), drone);
 
-				moveDrone(a2.getNearestNode().getDevice());
+				moveDrone(a.getNearestNode().getDevice());
 				try {
 					Thread.sleep(1500);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 				System.out.println("Message transmis entre " + devices.get(n1).getName() + " et " + devices.get(n2).getName());
-				affichage(a.execute(a2.getNearestNode().getDevice(), devices.get(n2)));
+				affichage(a.execute(a.getNearestNode().getDevice(), devices.get(n2)));
                 try {
                     Thread.sleep(1500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
 
+                //Le drone retourne a sa position initiale
 				while(!drone.getCoords().equals(initialDronePosition)){
 					int x = drone.getCoords().getX();
 					int y = drone.getCoords().getY();
@@ -164,9 +179,8 @@ public class Panel extends JPanel {
 					}
 				}
 			}
-			//cela veut dire que on utilise pas de drone mais des personnes a la place
+			//Cela veut dire que l'on est dans la configuration 3
 			else{
-				//ArrayList<Coordinate> coordinates = new ArrayList<>();
 				boolean b = true;
 				while(b){
 					paintComponent(getGraphics());
@@ -215,6 +229,12 @@ public class Panel extends JPanel {
 		}
 	}
 
+	/**
+	 * Sélection des points
+	 *
+	 * @param d (ArrayList<Device> )
+	 * @return int
+	 */
 	private int selectionPoint(ArrayList<Device> d){
 		System.out.println("Choisissez parmis ces points : ");
 		for (int i = 0; i < d.size(); i++) {
@@ -229,6 +249,13 @@ public class Panel extends JPanel {
 		}
 	}
 
+	/**
+	 * Fait bouger la passerelle
+	 *
+	 * @param gateway (Device)
+	 * @param destination (Coordinate)
+	 * @return (Coordinate)
+	 */
 	private Coordinate move(Device gateway, Coordinate destination){
 		int x = gateway.getCoords().getX();
 		int y = gateway.getCoords().getY();
@@ -255,6 +282,11 @@ public class Panel extends JPanel {
 		return new Coordinate(x, y);
 	}
 
+	/**
+	 * Fait bouger le drone
+	 *
+	 * @param goal (Coordinate)
+	 */
 	private void moveDrone(Device goal){
 		Astar a = new Astar();
 		ArrayList<Device> cheminDrone = a.execute(goal, drone);//On va transmettre le message au drone
