@@ -19,7 +19,7 @@ public class Node {
         return father;
     }
 
-
+    //Cette fonction nous retourne un résultat pour évaluer la solution
     public double heuristic(Coordinate but) {
         return distanceToHere + pos.distance(but);
     }
@@ -27,11 +27,13 @@ public class Node {
     public Coordinate getPos() {
         return pos;
     }
-
     public Device getDevice() {
         return device;
     }
 
+    /*
+     * Constructor
+     */
     public Node(Device device, Node father) {
         this.father = father;
         this.pos = device.getCoords();
@@ -47,9 +49,8 @@ public class Node {
 
     }
 
-
     public ArrayList<Node> nextNode() {
-        boolean b = true;
+        boolean b;
         ArrayList<Node> list = new ArrayList<>();
         ArrayList<Device> toAvoid = new ArrayList<>();
         for (Device d :this.toTrail())

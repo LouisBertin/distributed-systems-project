@@ -11,7 +11,6 @@ public class Device extends JComponent {
 	private String technology;
 	private Coordinate coords;
 	private boolean selection;
-
 	private ArrayList<Device> neighbourhood = new ArrayList<>();
 
 	public Device(String name, String technology, Coordinate coords) {
