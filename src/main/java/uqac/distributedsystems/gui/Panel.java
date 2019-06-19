@@ -72,7 +72,6 @@ public class Panel extends JPanel {
 		for(int i = 0; i <= chemin.size()-2; i++){
 			Device d1 = chemin.get(i);
 			Device d2 = chemin.get(i+1);
-			System.out.println(d1.getName() + " " + d2.getName());
 			g.drawLine(d1.getCoords().getX() + 4,d1.getCoords().getY() + 4,
 					d2.getCoords().getX() + 4, d2.getCoords().getY() + 4);
 		}
